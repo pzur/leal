@@ -729,7 +729,7 @@
             <img src="img/portfolio/lean3.jpeg" class="img-fluid" alt="">
           </div> -->
 
-          <div class="col-lg-6 px-4">
+          <div class="col-lg-6 col-md-6 col-sm-12 px-4">
             <div class="row mx-0">
               <!-- <div class="col-md-5 info">
                 <i class="ion-ios-location-outline"></i>
@@ -744,14 +744,14 @@
                 <p>986-985-365</p>
               </div>
             </div>
-
+            
             <div class="form">
               <div id="sendmessage">Tu mensaje ha sido recibido. Gracias !!!</div>
               <div id="errormessage"></div>
-              <form action="" method="post" role="form" class="contactForm">
+              <div class="contactForm">
                 <div class="form-row">
                   <div class="form-group col-lg-6">
-                    <input type="text" name="Nombres" class="form-control" id="name" placeholder="Nombres" data-rule="minlen:4" data-msg="Mínimo cuatro letras" />
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Nombres" data-rule="minlen:4" data-msg="Mínimo cuatro letras" />
                     <div class="validation"></div>
                   </div>
                   <div class="form-group col-lg-6">
@@ -764,14 +764,23 @@
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Escribe un mensaje" placeholder="Brindanos tus dudas"></textarea>
+                  <textarea class="form-control" name="message" id="message" rows="5" data-rule="required" data-msg="Escribe un mensaje" placeholder="Brindanos tus dudas"></textarea>
                   <div class="validation"></div>
                 </div>
-                <div class="text-center"><button type="submit" title="Enviar">Enviar</button></div>
-              </form>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-success" onclick="send_message()">Enviar</button>
+                </div>
+              </div>
             </div>
           </div>
-
+          <div class="col-lg-6 col-md-6 col-sm-12 px-4" style="
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+          ">
+            <img src="img/contact_us.svg" alt="" class="img-fluid">
+          </div>
         </div>
 
       </div>
@@ -869,6 +878,46 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+  <script>
+    const send_message = () => {
+      console.log('%c Hola !!', 'color: red; font-size: 40px')
+			var mensaje = $("#message").val();
+			var asunto = $("#subject").val();
+			var email = $("#email").val();
+			var nombre = $("#name").val();
+		  if (email != '') {
+	      $.ajax({
+	        url: "to_email.php",
+	        method: "POST",
+	        data: {
+	          mensaje: mensaje,
+	          asunto: asunto,
+	          email: email,
+	          nombre: nombre
+	        },
+	        success: function(data) {
+            console.log('DATA : ',data)
+	          //mostrar una notificacion
+	          Swal.fire({
+              position: 'center',
+              icon: 'success',	
+              title: 'Mensaje enviado',
+              showConfirmButton: false,
+              timer: 1600
+            })
+            $("#mensaje").val('');
+			      $("#asunto").val('');
+			      $("#email").val('');
+			      $("#nombre").val('');
+	        }
+	      });
+	    }
+    }
+  </script>
 
 </body>
 </html>
