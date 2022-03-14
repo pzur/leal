@@ -12,3 +12,4 @@ if ($_POST['email']) {
 }
 
 return 'Si termino'
+?>
