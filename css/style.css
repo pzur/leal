@@ -1406,10 +1406,23 @@ h6 {
   #testimonials .testimonial-item p {
     margin-left: 0;
   }
+
+  #contact .contact-img {
+    padding-top: 2.5em;
+  }
+
+ .footer-info {
+    padding: 0 15px !important;
+  }
+
 }
 
 @media (max-width: 574px) {
   #intro {
     padding: 100px 0 20px 0;
+  }
+
+  #footer .container {
+    padding: 0 2em;
   }
 }
