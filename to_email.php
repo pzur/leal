@@ -1,5 +1,4 @@
 <?php
-return  'Hola'
 if ($_POST['email']) {
 	$name = $_POST['name'];
 	$client = $_POST['email'];
@@ -10,6 +9,4 @@ if ($_POST['email']) {
 
 	mail($to, $subject, $mensaje, 'From: '.$client);
 }
-
-return 'Si termino'
 ?>
