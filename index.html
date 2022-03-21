@@ -834,7 +834,6 @@
 
   <script>
     const send_message = () => {
-      console.log('%c Hola !!', 'color: red; font-size: 40px')
 			var mensaje = $("#message").val();
 			var asunto = $("#subject").val();
 			var email = $("#email").val();
@@ -844,13 +843,12 @@
 	        url: "to_email.php",
 	        method: "POST",
 	        data: {
-	          mensaje: mensaje,
-	          asunto: asunto,
+	          message: mensaje,
+	          subject: asunto,
 	          email: email,
-	          nombre: nombre
+	          name: nombre
 	        },
 	        success: function(data) {
-            console.log('DATA : ',data)
 	          //mostrar una notificacion
 	          Swal.fire({
               position: 'center',
@@ -859,10 +857,10 @@
               showConfirmButton: false,
               timer: 1600
             })
-            $("#mensaje").val('');
-			      $("#asunto").val('');
-			      $("#email").val('');
-			      $("#nombre").val('');
+            	$("#mensaje").val('');
+		$("#asunto").val('');
+		$("#email").val('');
+		$("#nombre").val('');
 	        }
 	      });
 	    }
