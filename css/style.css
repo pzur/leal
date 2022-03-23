@@ -1377,6 +1377,11 @@ h6 {
   .back-to-top {
     bottom: 15px;
   }
+
+  #footer .footer-top {
+    text-align: center;
+  }
+
 }
 
 @media (max-width: 767px) {
